@@ -1,0 +1,20 @@
+// Place all the styles related to the HistoricalEvents controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-color: #eee;
+}
+
+.historical_events {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.historical_event {
+  .year {
+    float: left;
+    width: 3em;
+  }
+  margin-bottom: 0.7em;
+}

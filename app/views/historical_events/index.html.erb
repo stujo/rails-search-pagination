@@ -1,0 +1,32 @@
+<h1>Historical Events</h1>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= bootstrap_form_for(@event_search_form, :url => '/historical_events/search', :method => :get, layout: :inline) do |f| %>
+        <%= f.text_field :q, :hide_label => true, :placeholder => 'Search...' %>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <% if @historical_events.blank? %>
+        <div class="alert alert-info">No Events Match Your Search</div>
+    <% else %>
+        <%= will_paginate @historical_events, renderer: BootstrapPagination::Rails %>
+
+        <ul class="historical_events">
+          <%= content_tag_for(:li, @historical_events) do |historical_event| %>
+              <strong class="year"><%= historical_event.year %></strong>
+              <i class="event"><%= historical_event.event %></i>
+          <% end %>
+        </ul>
+
+        <%= will_paginate @historical_events, renderer: BootstrapPagination::Rails %>
+
+    <% end %>
+  </div>
+</div>
+
+<%= link_to('Start Again',root_path, :class => 'btn btn-primary btn-md') %>
