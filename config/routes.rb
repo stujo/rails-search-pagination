@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
 
+  resources :api_historical_events, only: [:index]
+  get "apitest", to: "static#index"
 end

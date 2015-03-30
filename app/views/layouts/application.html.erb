@@ -3,10 +3,9 @@
 <head>
   <title>HistoricalEvents</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="controller_<%= controller_name %>">
 
 <div class="container">
   <div class="row clearfix">
@@ -17,9 +16,14 @@
 </div>
 
 <footer class="footer">
-<div class="container">
-<p class="text-muted"><a href="http://en.wikipedia.org/wiki/Timeline_of_scientific_discoveries">Historical Events from WikiPedia</a></p>
-</div>
+  <div class="container">
+    <p class="text-muted">
+      <a href="http://en.wikipedia.org/wiki/Timeline_of_scientific_discoveries">Historical Events from WikiPedia</a></p>
+  </div>
 </footer>
+<%= javascript_include_tag 'application' %>
+<script>
+    $('body').triggerHandler('loaded:<%= controller_name %>');
+</script>
 </body>
 </html>

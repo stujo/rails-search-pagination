@@ -11,10 +11,4 @@ class HistoricalEventsController < ApplicationController
     render :index
   end
 
-  private
-
-  def current_pagination_params
-    {page:  params[:page] || 1, :per_page => 5}
-  end
-
 end

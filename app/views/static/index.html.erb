@@ -1,0 +1,59 @@
+<h1>API Test Historical Events</h1>
+
+<div id="events">
+
+</div>
+
+<button id="next">Next</button>
+
+<script type="text/template" id="pagination_template">
+
+  <ul class="pagination pagination">
+
+    {{ if(data.current_page > 1) { }}
+    <li class="prev"><a rel="prev" data-page="{{= data.current_page - 1}}">← Previous</a></li>
+    {{ } else { }}
+    <li class="prev disabled"><span>← Previous</span></li>
+    {{ } }}
+
+    {{ for(var pageNumber = 1 ; pageNumber <= data.total_pages; pageNumber++){ }}
+
+    {{ if(data.current_page == pageNumber) { }}
+    <li class="active"><span>{{= pageNumber }}</span></li>
+    {{ } else { }}
+    <li><a data-page="{{= pageNumber }}">{{= pageNumber }}</a></li>
+    {{ } }}
+
+    {{ } }}
+
+    {{ if(data.current_page < data.total_pages) { }}
+    <li class="next"><a rel="next" data-page="{{= data.current_page + 1}}">Next →</a></li>
+    {{ } else { }}
+    <li class="next disabled"><span>← Next</span></li>
+    {{ } }}
+
+
+  </ul>
+</script>
+
+<script type="text/template" id="events_template">
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      {{= paginationTemplate({data: data}) }}
+
+      <ul class="historical_events">
+        {{ _.each(data.results, function(event) { }}
+        <li class="historical_event" id="historical_event_{{= event.id }}">
+          <strong class="year">{{= event.year }}</strong>
+          <i class="event">{{= event.event }}</i>
+        </li>
+        {{ }) }}
+      </ul>
+
+      {{= paginationTemplate({data: data}) }}
+
+    </div>
+  </div>
+</script>
+

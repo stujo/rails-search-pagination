@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
   #Because the form is global on all our pages
   before_action :set_form
 
+
+  def current_pagination_params
+    {page:  params[:page] || 1, :per_page => 5}
+  end
+
+
   private
   def set_form
     @event_search_form = EventSearchForm.new
