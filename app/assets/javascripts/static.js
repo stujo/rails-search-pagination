@@ -19,18 +19,14 @@ $('body').on('loaded:static', function (event) {
     });
   }
 
-  $eventsDiv.on('click','.pagination a', function(event){
+  $eventsDiv.on('click', '.pagination a', function (event) {
     var $link = $(event.target);
     var page = parseInt($link.data('page'));
-    if(page){
+    if (page) {
       loadEvents(page);
     }
   });
 
-  $('#next').click(function (event) {
-    var currentPage = parseInt($eventsDiv.data('currentPage'));
-    loadEvents(currentPage + 1)
-  });
 
   loadEvents(1);
 
